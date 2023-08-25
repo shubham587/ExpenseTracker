@@ -6,7 +6,7 @@ import "./NewExpense.css";
 const NewExpense = (props) => {
   const formSaveHandler = (expense) => {
     props.onAddData(expense)
-    console.log([{...expense}][0].date.getFullYear(), "asdf");
+    console.log(Number([{...expense}][0].date.getFullYear()), "asdf");
   };
 
   return (

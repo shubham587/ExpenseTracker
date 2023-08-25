@@ -3,35 +3,52 @@ import ExpenseItem from "./ExpenseItem";
 import ExpenseFilter from "./ExpenseFilter";
 import "./Expense.css";
 const Expense = (props) => {
-  const [filteredDate, setFilteredDate] = useState("2019");
-  const [specYearExpense, setSpecYearExpense] = useState([
-    ...props.item.filter((ele) => {
-        console.log(Number(ele.date.getFullYear()), "in date init")
-        console.log(filteredDate, "in date init     f")
-      return ele.date.getFullYear() == filteredDate;
-    }),
-  ]);
+  //   const [filteredDate, setFilteredDate] = useState("2019");
+  //   const [specYearExpense, setSpecYearExpense] = useState([
+  //     // ...props.item.filter((ele) => {
+  //     //   return ele.date.getFullYear() === Number(filteredDate);
+  //     // }),
+  //   ]);
+
+  const [expenData, setExpenData] = useState({
+    filteredDate: "2019",
+    specYearExpense: [
+      ...props.item.filter((ele) => {
+        console.log(Number(ele.date.getFullYear()), "in");
+        return Number(ele.date.getFullYear()) === this.filteredDate;
+      }),
+    ],
+  });
 
   const yearChangeHandler = (newYear) => {
-    setFilteredDate(newYear);
-    setSpecYearExpense([
-      ...props.item.filter((ele) => {
-        console.log(ele.date.getFullYear(), "in2 date")
-        console.log(filteredDate, "in2 date f...")
-        return ele.date.getFullYear() == filteredDate;
-      }),
-    ]);
+    setExpenData((prevState) => {
+      return {
+        filteredDate: newYear,
+        specYearExpense: [
+          ...props.item.filter((ele) => {
+            console.log(Number(ele.date.getFullYear()), "in");
+            return Number(ele.date.getFullYear()) === this.filteredDate;
+          }),
+        ],
+      };
+    });
+    // setFilteredDate(newYear);
+    // setSpecYearExpense([
+    //   ...props.item.filter((ele) => {
+    //     console.log(Number(ele.date.getFullYear()), "in");
+    //     return Number(ele.date.getFullYear()) === newYear;
+    //   }),
+    // ]);
   };
 
-  console.log(specYearExpense, "spec");
-  console.log(props.item, "props");
-  console.log(filteredDate, "date-log");
+  console.log(expenData.filteredDate, "filter");
+  console.log(expenData.specYearExpense, "data");
 
   return (
     <>
       <div className="filterContainer">
         <ExpenseFilter
-          selected={filteredDate}
+          selected={expenData.filteredDate}
           onYearChange={yearChangeHandler}
         />
       </div>
