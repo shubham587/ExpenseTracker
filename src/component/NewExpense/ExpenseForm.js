@@ -23,7 +23,7 @@ const ExpenseForm = (props) => {
   //   setEnteredTitle: event.target.value
   // });
 
-  // The below state approach is used when and mostly used in general and when it depend upon the prevState
+  // ********The below state approach is used when and mostly used in general and when it depend upon the prevState
   // setUserInput((prevState) => {
   //   return {
   //     ...prevState,
