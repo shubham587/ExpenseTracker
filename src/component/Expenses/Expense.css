@@ -8,3 +8,13 @@
     border-radius: 5px;
     justify-content: flex-end;
 }
+
+.expense-container {
+    margin: auto;
+    background-color: rgb(64, 138, 138);
+    padding: 3%;
+    width: 80%;
+    height: auto;
+    border: none;
+    border-radius: 25px;
+}

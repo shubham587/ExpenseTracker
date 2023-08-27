@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import ExpenseItem from "./ExpenseItem";
+// import ExpenseItem from "./ExpenseItem";
 import ExpenseFilter from "./ExpenseFilter";
 import "./Expense.css";
+import ExpenseList from "./ExpenseList";
 const Expense = (props) => {
   const [filteredDate, setFilteredDate] = useState("2019");
   //   const [specYearExpense, setSpecYearExpense] = useState([
@@ -40,17 +41,15 @@ const Expense = (props) => {
   };
 
   return (
-    <>
+    <div className="expense-container">
       <div className="filterContainer">
         <ExpenseFilter
           selected={filteredDate}
           onYearChange={yearChangeHandler}
         />
       </div>
-      {filteredArr.map((ele, ind) => (
-        <ExpenseItem key={ind} expense={ele} />
-      ))}
-    </>
+      <ExpenseList filteredData={filteredArr} />
+    </div>
   );
 };
 
